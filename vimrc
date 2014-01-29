@@ -32,7 +32,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'godlygeek/tabular'
 
 " python plugins
-Bundle 'davidhalter/jedi-vim'
+" Bundle 'davidhalter/jedi-vim'
 
 " c/c++ plugins
 Bundle 'Valloric/YouCompleteMe'
@@ -119,7 +119,7 @@ set backspace=2 " make backspace work like most other apps
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
-let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1 }
+let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1, 'python': 1 }
 let g:ycm_global_ycm_extra_conf = "~/dotfiles"
 
 " Buffers - next/previous
