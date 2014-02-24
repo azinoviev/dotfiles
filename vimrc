@@ -1,6 +1,5 @@
 " vundle
 set nocompatible
-set background=dark
 filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
@@ -9,14 +8,12 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'spf13/vim-colors'
 Bundle 'tpope/vim-surround'
 Bundle 'kien/ctrlp.vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'matchit.zip'
 Bundle 'bling/vim-airline'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'godlygeek/csapprox'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'mbbill/undotree'
@@ -63,22 +60,21 @@ set hidden
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 
-if $COLORTERM == 'gnome-terminal'
-  set t_Co=256
-endif
-
-set term=gnome-256color
+set t_Co=16
 
 let g:solarized_termtrans=1
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 let g:solarized_termcolors=16
-color solarized
 let g:airline_theme="solarized"
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
+" color solarized
+syntax enable
+set background=dark
+colorscheme solarized
 set showmode
 set cursorline!
 
@@ -131,3 +127,4 @@ vnoremap < <gv
 vnoremap > >gv
 
 au FileChangedShell * echo "Warning: File changed on disk"
+
