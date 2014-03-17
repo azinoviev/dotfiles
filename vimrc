@@ -15,7 +15,6 @@ Bundle 'matchit.zip'
 Bundle 'bling/vim-airline'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'flazz/vim-colorschemes'
 Bundle 'mbbill/undotree'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
@@ -29,10 +28,10 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'godlygeek/tabular'
 
 " python plugins
-" Bundle 'davidhalter/jedi-vim'
+Bundle 'davidhalter/jedi-vim'
 
 " c/c++ plugins
-Bundle 'Valloric/YouCompleteMe'
+" Bundle 'Valloric/YouCompleteMe'
 
 syntax on
 scriptencoding utf-8
@@ -50,6 +49,9 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
+
+" Syntastic
+nnoremap <C-w>E :SyntasticCheck<CR>
 
 set nospell
 au BufRead,BufNewFile * set nospell
@@ -115,16 +117,17 @@ set backspace=2 " make backspace work like most other apps
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
-let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1, 'python': 1 }
-let g:ycm_global_ycm_extra_conf = "~/dotfiles"
+"let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1, 'python': 1 }
+"let g:ycm_global_ycm_extra_conf = "~/dotfiles"
 
 " Buffers - next/previous
 nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
+
 
 "make < > shifts keep selection
 vnoremap < <gv
 vnoremap > >gv
 
 au FileChangedShell * echo "Warning: File changed on disk"
-
+set clipboard=unnamed
