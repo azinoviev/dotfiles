@@ -26,9 +26,11 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'mattn/webapi-vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'godlygeek/tabular'
+Bundle 'majutsushi/tagbar'
 
 " python plugins
 Bundle 'davidhalter/jedi-vim'
+Bundle 'tell-k/vim-autopep8'
 
 " c/c++ plugins
 " Bundle 'Valloric/YouCompleteMe'
@@ -51,7 +53,24 @@ let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
 " Syntastic
-nnoremap <C-w>E :SyntasticCheck<CR>
+nnoremap ;sc :SyntasticCheck<CR>
+nnoremap ;sr :SyntasticReset<CR>
+
+" vim-indent-guides
+let g:indent_guides_guide_size=1
+" customization for solarized dark colorscheme
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=10
+autocmd FileType python :IndentGuidesEnable
+
+" vim-autopep8
+nnoremap ;a :Autopep8<CR>
+
+nnoremap ;t :TagbarToggle<CR>
+
+"highlight ColorColumn ctermbg=15
+"call matchadd('ColorColumn', '\%81v', 100)
 
 set nospell
 au BufRead,BufNewFile * set nospell
@@ -78,7 +97,7 @@ syntax enable
 set background=dark
 colorscheme solarized
 set showmode
-set cursorline!
+"set cursorline!
 
 highlight clear SignColumn
 highlight clear LineNr
@@ -130,4 +149,8 @@ vnoremap < <gv
 vnoremap > >gv
 
 au FileChangedShell * echo "Warning: File changed on disk"
+
 set clipboard=unnamed
+
+" Show vertical line at 81 position
+"set colorcolumn=81
