@@ -31,7 +31,7 @@ Bundle 'majutsushi/tagbar'
 " python plugins
 Bundle 'davidhalter/jedi-vim'
 Bundle 'tell-k/vim-autopep8'
-
+let g:jedi#use_tabs_not_buffers = 0
 " c/c++ plugins
 " Bundle 'Valloric/YouCompleteMe'
 
