@@ -1,0 +1,9 @@
+pep8
+autopep8
+jedi
+rope
+pylint
+pyflakes
+flake8
+hacking
+
