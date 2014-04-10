@@ -6,4 +6,5 @@ pylint
 pyflakes
 flake8
 hacking
-
+pudb
+ipython
