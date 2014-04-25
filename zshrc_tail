@@ -4,7 +4,7 @@ export JRE_HOME=$JDK_HOME/jre
 
 export PATH=$HOME/local/bin:$JDK_HOME/bin:$JRE_HOME/bin:$PATH
 
-export WORKON_HOME=$HOME/venv
+export WORKON_HOME=$HOME/.virtualenvs
 source $HOME/local/bin/virtualenvwrapper.sh
 export TERM=xterm
 export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
