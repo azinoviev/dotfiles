@@ -9,3 +9,4 @@ hacking
 pudb
 ipython
 pip-tools
+epc
