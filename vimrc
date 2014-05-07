@@ -28,12 +28,19 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'godlygeek/tabular'
 Bundle 'majutsushi/tagbar'
 
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
+
 " python plugins
 Bundle 'davidhalter/jedi-vim'
 Bundle 'tell-k/vim-autopep8'
+
+"Bundle 'Valloric/YouCompleteMe'
+"let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1 }
+
 let g:jedi#use_tabs_not_buffers = 0
-" c/c++ plugins
-" Bundle 'Valloric/YouCompleteMe'
 
 syntax on
 scriptencoding utf-8
