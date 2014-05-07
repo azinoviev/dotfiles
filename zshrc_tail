@@ -1,4 +1,4 @@
-export JDK_HOME=$HOME/local/jdk1.8.0
+export JDK_HOME=$HOME/local/jdk1.8.0_05
 export JAVA_HOME=$JDK_HOME
 export JRE_HOME=$JDK_HOME/jre
 
