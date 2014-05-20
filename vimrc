@@ -33,9 +33,14 @@ Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
 Bundle 'honza/vim-snippets'
 
+" JavaScript
+Bundle 'elzr/vim-json'
+Bundle 'pangloss/vim-javascript'
+
 " python plugins
 Bundle 'davidhalter/jedi-vim'
 Bundle 'tell-k/vim-autopep8'
+Bundle 'python_match.vim'
 
 "Bundle 'Valloric/YouCompleteMe'
 "let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1 }
