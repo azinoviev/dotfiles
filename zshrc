@@ -19,3 +19,11 @@ export EDITOR=vim
 # for mysqlsandbox
 export PERL5LIB=$HOME/local/lib/perl5/site_perl/5.8.8:$HOME/local/share/perl/5.18.2
 
+# pyenv
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+export PYENV_ROOT="${HOME}/.pyenv"
+
+if [ -d "${PYENV_ROOT}" ]; then
+  export PATH="${PYENV_ROOT}/bin:${PATH}"
+  eval "$(pyenv init -)"
+fi

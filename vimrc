@@ -46,6 +46,7 @@ Bundle 'python_match.vim'
 "let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1 }
 
 let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#popup_on_dot = 0
 
 syntax on
 scriptencoding utf-8
