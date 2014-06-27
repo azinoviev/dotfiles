@@ -2,7 +2,7 @@ export JDK_HOME=$HOME/local/jdk1.8.0_05
 export JAVA_HOME=$JDK_HOME
 export JRE_HOME=$JDK_HOME/jre
 
-export PATH=$HOME/local/bin:$JDK_HOME/bin:$JRE_HOME/bin:$PATH
+export PATH=$HOME/.cabal/bin:$HOME/local/bin:$JDK_HOME/bin:$JRE_HOME/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
 export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig:$PKG_CONFIG_PATH
 
@@ -27,3 +27,6 @@ if [ -d "${PYENV_ROOT}" ]; then
   export PATH="${PYENV_ROOT}/bin:${PATH}"
   eval "$(pyenv init -)"
 fi
+
+alias viml='SOLARIZED_LIGHT=1 vim'
+

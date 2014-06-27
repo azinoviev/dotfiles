@@ -37,10 +37,26 @@ Bundle 'honza/vim-snippets'
 Bundle 'elzr/vim-json'
 Bundle 'pangloss/vim-javascript'
 
+" Web
+Bundle 'amirh/HTML-AutoCloseTag'
+Bundle 'hail2u/vim-css3-syntax'
+
 " python plugins
 Bundle 'davidhalter/jedi-vim'
 Bundle 'tell-k/vim-autopep8'
 Bundle 'python_match.vim'
+
+" Haskell
+Bundle 'travitch/hasksyn'
+Bundle 'dag/vim2hs'
+Bundle 'Twinside/vim-haskellConceal'
+Bundle 'Twinside/vim-haskellFold'
+Bundle 'lukerandall/haskellmode-vim'
+Bundle 'eagletmt/neco-ghc'
+Bundle 'eagletmt/ghcmod-vim'
+Bundle 'Shougo/vimproc'
+Bundle 'adinapoli/cumino'
+Bundle 'bitc/vim-hdevtools'
 
 "Bundle 'Valloric/YouCompleteMe'
 "let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1 }
@@ -107,7 +123,11 @@ let g:airline_right_sep=''
 
 " color solarized
 syntax enable
-set background=dark
+if !empty($SOLARIZED_LIGHT)
+    set background=light
+else
+    set background=dark
+endif
 colorscheme solarized
 set showmode
 "set cursorline!
