@@ -186,4 +186,4 @@ au FileChangedShell * echo "Warning: File changed on disk"
 set clipboard=unnamed
 
 " Show vertical line at 81 position
-"set colorcolumn=81
+autocmd FileType python :set colorcolumn=80
