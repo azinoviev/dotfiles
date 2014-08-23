@@ -94,7 +94,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=10
 autocmd FileType python :IndentGuidesEnable
 
 " vim-autopep8
-nnoremap ;a :Autopep8<CR>
+nnoremap ;a :call Autopep8()<CR>
 
 nnoremap ;t :TagbarToggle<CR>
 
