@@ -7,6 +7,8 @@ export LC_ALL=en_US.UTF-8
 
 export EDITOR=vim
 
+alias tmux="TERM=screen-256color-bce tmux"
+
 # pyenv
 export WORKON_HOME=$HOME/.virtualenvs
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
