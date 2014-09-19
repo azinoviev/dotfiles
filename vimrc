@@ -5,60 +5,63 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 " general plugins
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'tpope/vim-surround'
-Bundle 'kien/ctrlp.vim'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'matchit.zip'
-Bundle 'bling/vim-airline'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'mbbill/undotree'
-Bundle 'myusuf3/numbers.vim'
-Bundle 'nathanaelkane/vim-indent-guides'
+Plugin 'gmarik/vundle'
+Plugin 'scrooloose/nerdtree'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-surround'
+Plugin 'kien/ctrlp.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'matchit.zip'
+Plugin 'bling/vim-airline'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'mbbill/undotree'
+Plugin 'myusuf3/numbers.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 " programming plugins
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'mattn/webapi-vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'godlygeek/tabular'
-Bundle 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mattn/webapi-vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'godlygeek/tabular'
+Plugin 'majutsushi/tagbar'
 
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
 " JavaScript
-Bundle 'elzr/vim-json'
-Bundle 'pangloss/vim-javascript'
+Plugin 'elzr/vim-json'
+Plugin 'pangloss/vim-javascript'
 
 " Web
-Bundle 'amirh/HTML-AutoCloseTag'
-Bundle 'hail2u/vim-css3-syntax'
+Plugin 'amirh/HTML-AutoCloseTag'
+Plugin 'hail2u/vim-css3-syntax'
 
 " python plugins
-Bundle 'davidhalter/jedi-vim'
-Bundle 'tell-k/vim-autopep8'
-Bundle 'python_match.vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'tell-k/vim-autopep8'
+Plugin 'python_match.vim'
+
+" go
+Plugin 'fatih/vim-go'
 
 " Haskell
-Bundle 'travitch/hasksyn'
-Bundle 'dag/vim2hs'
-Bundle 'Twinside/vim-haskellConceal'
-Bundle 'Twinside/vim-haskellFold'
-Bundle 'lukerandall/haskellmode-vim'
-Bundle 'eagletmt/neco-ghc'
-Bundle 'eagletmt/ghcmod-vim'
-Bundle 'Shougo/vimproc'
-Bundle 'adinapoli/cumino'
-Bundle 'bitc/vim-hdevtools'
+Plugin 'travitch/hasksyn'
+Plugin 'dag/vim2hs'
+Plugin 'Twinside/vim-haskellConceal'
+Plugin 'Twinside/vim-haskellFold'
+Plugin 'lukerandall/haskellmode-vim'
+Plugin 'eagletmt/neco-ghc'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'Shougo/vimproc'
+Plugin 'adinapoli/cumino'
+Plugin 'bitc/vim-hdevtools'
 
-"Bundle 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 "let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1 }
 
 let g:jedi#use_tabs_not_buffers = 0
@@ -82,8 +85,8 @@ let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
 " Syntastic
-nnoremap ;sc :SyntasticCheck<CR>
-nnoremap ;sr :SyntasticReset<CR>
+"nnoremap ;sc :SyntasticCheck<CR>
+"nnoremap ;sr :SyntasticReset<CR>
 
 " vim-indent-guides
 let g:indent_guides_guide_size=1
@@ -94,9 +97,9 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=10
 autocmd FileType python :IndentGuidesEnable
 
 " vim-autopep8
-nnoremap ;a :call Autopep8()<CR>
+"nnoremap ;a :call Autopep8()<CR>
 
-nnoremap ;t :TagbarToggle<CR>
+"nnoremap ;t :TagbarToggle<CR>
 
 "highlight ColorColumn ctermbg=15
 "call matchadd('ColorColumn', '\%81v', 100)
@@ -111,8 +114,9 @@ let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 
 set t_Co=16
+"set t_Co=256
 
-let g:solarized_termtrans=1
+"let g:solarized_termtrans=1
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 let g:solarized_termcolors=16
@@ -187,3 +191,7 @@ set clipboard=unnamed
 
 " Show vertical line at 81 position
 autocmd FileType python :set colorcolumn=80
+
+" Go settings
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+au BufNewFile,BufRead *.go setlocal nolist
