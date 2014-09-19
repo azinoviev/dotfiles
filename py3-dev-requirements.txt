@@ -1,0 +1,12 @@
+pep8
+autopep8
+jedi
+rope_py3k
+pylint
+pyflakes
+flake8
+hacking
+pudb
+ipython
+pip-tools
+epc
