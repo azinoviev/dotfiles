@@ -10,3 +10,5 @@ pudb
 ipython
 pip-tools
 epc
+ipdb
+bpython
