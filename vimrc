@@ -143,7 +143,6 @@ let g:airline_right_sep=''
 " color solarized
 syntax enable
 set background=dark
-endif
 colorscheme solarized
 set showmode
 
