@@ -52,7 +52,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'python_match.vim'
 
 " go
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 
 " Haskell
 "Plugin 'travitch/hasksyn'
