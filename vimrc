@@ -47,19 +47,21 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'python_match.vim'
 
 " go
-"Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go'
+
+Plugin 'JuliaLang/julia-vim'
 
 " Haskell
-"Plugin 'travitch/hasksyn'
-"Plugin 'dag/vim2hs'
-"Plugin 'Twinside/vim-haskellConceal'
-"Plugin 'Twinside/vim-haskellFold'
-"Plugin 'lukerandall/haskellmode-vim'
-"Plugin 'eagletmt/neco-ghc'
-"Plugin 'eagletmt/ghcmod-vim'
-"Plugin 'Shougo/vimproc'
-"Plugin 'adinapoli/cumino'
-"Plugin 'bitc/vim-hdevtools'
+Plugin 'travitch/hasksyn'
+Plugin 'dag/vim2hs'
+Plugin 'Twinside/vim-haskellConceal'
+Plugin 'Twinside/vim-haskellFold'
+Plugin 'lukerandall/haskellmode-vim'
+Plugin 'eagletmt/neco-ghc'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'Shougo/vimproc'
+Plugin 'adinapoli/cumino'
+Plugin 'bitc/vim-hdevtools'
 
 "Plugin 'lsdr/octave.vim'
 " Octave syntax
@@ -76,9 +78,9 @@ Plugin 'python_match.vim'
 "let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1 }
 
 " Haskell
-"let g:haddock_browser = "open"
-"let g:haddock_browser_callformat = "%s %s"
-
+let g:haddock_browser = "open"
+let g:haddock_browser_callformat = "%s %s"
+let g:haddock_docdir = "/usr/local/share/doc/ghc/html"
 
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 0
@@ -135,9 +137,9 @@ set t_Co=16
 "set t_Co=256
 
 "let g:solarized_termtrans=1
-" let g:solarized_contrast="high"
-" let g:solarized_visibility="high"
-" let g:solarized_termcolors=16
+"let g:solarized_contrast="high"
+"let g:solarized_visibility="high"
+"let g:solarized_termcolors=256
 let g:airline_theme="solarized"
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep=''
@@ -145,11 +147,7 @@ let g:airline_right_sep=''
 
 " color solarized
 syntax enable
-if !empty($SOLARIZED_LIGHT)
-    set background=light
-else
-    set background=dark
-endif
+set background=dark
 colorscheme solarized
 set showmode
 "set cursorline!
