@@ -1,5 +1,9 @@
 " vundle
 set nocompatible
+set nobackup
+set nowritebackup
+set noswapfile
+set shortmess+=I
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
@@ -37,6 +41,7 @@ Plugin 'honza/vim-snippets'
 " JavaScript
 Plugin 'elzr/vim-json'
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 " Web
 Plugin 'amirh/HTML-AutoCloseTag'
@@ -82,11 +87,17 @@ let g:haddock_browser = "open"
 let g:haddock_browser_callformat = "%s %s"
 let g:haddock_docdir = "/usr/local/share/doc/ghc/html"
 
+" jsx
+let g:jsx_ext_required = 0
+let g:formatprg_args_expr_javascript = '"-f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")." --e4x"'
+
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 0
 
 syntax on
 scriptencoding utf-8
+
+nmap <Esc>s :w<CR>
 
 " NerdTree
 map <C-e> :NERDTreeToggle<CR>
@@ -108,21 +119,9 @@ nnoremap ,sr :SyntasticReset<CR>
 
 noremap <F3> :Autoformat<CR><CR>
 
-" vim-indent-guides
-"let g:indent_guides_guide_size=1
-" customization for solarized dark colorscheme
-"let g:indent_guides_auto_colors = 0
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=0
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=10
-"autocmd FileType python :IndentGuidesEnable
-
 " vim-autopep8
 nnoremap ,a :call Autopep8()<CR>
-
 nnoremap ,t :TagbarToggle<CR>
-
-"highlight ColorColumn ctermbg=15
-"call matchadd('ColorColumn', '\%81v', 100)
 
 set nospell
 au BufRead,BufNewFile * set nospell
@@ -134,7 +133,6 @@ let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 
 set t_Co=16
-"set t_Co=256
 
 "let g:solarized_termtrans=1
 "let g:solarized_contrast="high"
@@ -150,7 +148,6 @@ syntax enable
 set background=dark
 colorscheme solarized
 set showmode
-"set cursorline!
 
 highlight clear SignColumn
 highlight clear LineNr
@@ -212,3 +209,5 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(pyc|so|dll)$'
   \ }
+
+set diffopt=filler,vertical
