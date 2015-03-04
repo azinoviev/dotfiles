@@ -1,11 +1,2 @@
 export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
 export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig:$PKG_CONFIG_PATH
-
-# Java (local installation)
-export JDK_HOME=$HOME/local/jdk1.8.0_20
-export JAVA_HOME=$JDK_HOME
-export JRE_HOME=$JDK_HOME/jre
-export PATH=$JDK_HOME/bin:$JRE_HOME/bin:$PATH
-
-# Haskell
-export PATH=$HOME/.cabal/bin:$PATH

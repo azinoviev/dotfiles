@@ -13,11 +13,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 export WORKON_HOME=$HOME/.virtualenvs
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 export PYENV_ROOT="${HOME}/.pyenv"
-
-if [ -d "${PYENV_ROOT}" ]; then
-  export PATH="${PYENV_ROOT}/bin:${PATH}"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-fi
-
+export PATH="${PYENV_ROOT}/bin:${PATH}"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 pyenv virtualenvwrapper
