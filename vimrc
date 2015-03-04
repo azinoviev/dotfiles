@@ -47,52 +47,30 @@ Plugin 'mxw/vim-jsx'
 Plugin 'amirh/HTML-AutoCloseTag'
 Plugin 'hail2u/vim-css3-syntax'
 
-" python plugins
+" Python plugins
 Plugin 'davidhalter/jedi-vim'
 Plugin 'python_match.vim'
 
-" go
-Plugin 'fatih/vim-go'
-
-Plugin 'JuliaLang/julia-vim'
+" Haskell
+"Plugin 'travitch/hasksyn'
+"Plugin 'dag/vim2hs'
+"Plugin 'Twinside/vim-haskellConceal'
+"Plugin 'Twinside/vim-haskellFold'
+"Plugin 'lukerandall/haskellmode-vim'
+"Plugin 'eagletmt/neco-ghc'
+"Plugin 'eagletmt/ghcmod-vim'
+"Plugin 'Shougo/vimproc'
+"Plugin 'adinapoli/cumino'
+"Plugin 'bitc/vim-hdevtools'
 
 " Haskell
-Plugin 'travitch/hasksyn'
-Plugin 'dag/vim2hs'
-Plugin 'Twinside/vim-haskellConceal'
-Plugin 'Twinside/vim-haskellFold'
-Plugin 'lukerandall/haskellmode-vim'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'Shougo/vimproc'
-Plugin 'adinapoli/cumino'
-Plugin 'bitc/vim-hdevtools'
+"let g:haddock_browser = "open"
+"let g:haddock_browser_callformat = "%s %s"
+"let g:haddock_docdir = "/usr/local/share/doc/ghc/html"
 
-"Plugin 'lsdr/octave.vim'
-" Octave syntax
-"augroup filetypedetect
-  "au! BufRead,BufNewFile *.m,*.oct set filetype=octave
-"augroup END
-
-" Use keywords from Octave syntax language file for autocomplete
-"if has("autocmd") && exists("+omnifunc")
-  "autocmd Filetype octave if &omnifunc == "" | setlocal omnifunc=syntaxcomplete#Complete | endif
-"endif
-
-"Plugin 'Valloric/YouCompleteMe'
-"let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1 }
-
-" Haskell
-let g:haddock_browser = "open"
-let g:haddock_browser_callformat = "%s %s"
-let g:haddock_docdir = "/usr/local/share/doc/ghc/html"
-
-" jsx
+" JSX
 let g:jsx_ext_required = 0
 let g:formatprg_args_expr_javascript = '"-f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")." --e4x"'
-
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#popup_on_dot = 0
 
 syntax on
 scriptencoding utf-8
@@ -119,8 +97,14 @@ nnoremap ,sr :SyntasticReset<CR>
 
 noremap <F3> :Autoformat<CR><CR>
 
-" vim-autopep8
+" Python
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#popup_on_dot = 0
 nnoremap ,a :call Autopep8()<CR>
+let g:syntastic_python_python_exec = '/Users/alex/.virtualenvs/dev/bin/python'
+let g:syntastic_python_checkers=['python', 'pylint', 'pep8']
+"let g:syntastic_python_pylint_args = "--ignore=E501 --max-complexity 10"
+
 nnoremap ,t :TagbarToggle<CR>
 
 set nospell
@@ -186,9 +170,6 @@ set backspace=2 " make backspace work like most other apps
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
-"let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1, 'python': 1 }
-"let g:ycm_global_ycm_extra_conf = "~/dotfiles"
-
 " Buffers - next/previous
 nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
@@ -200,10 +181,6 @@ vnoremap > >gv
 au FileChangedShell * echo "Warning: File changed on disk"
 
 set clipboard=unnamed
-
-" Go settings
-au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
-au BufNewFile,BufRead *.go setlocal nolist
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
