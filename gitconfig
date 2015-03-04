@@ -1,0 +1,17 @@
+[user]
+	name = Alexey Zinoviev
+	email = alexey.zinoviev@gmail.com
+[core]
+	editor = vim
+[push]
+	default = simple
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	d = difftool
+    s = status
+	lga = log --graph --oneline --all --decorate
+[color]
+	ui = auto
