@@ -52,30 +52,45 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'python_match.vim'
 
 " Haskell
-"Plugin 'travitch/hasksyn'
-"Plugin 'dag/vim2hs'
-"Plugin 'Twinside/vim-haskellConceal'
-"Plugin 'Twinside/vim-haskellFold'
-"Plugin 'lukerandall/haskellmode-vim'
-"Plugin 'eagletmt/neco-ghc'
-"Plugin 'eagletmt/ghcmod-vim'
-"Plugin 'Shougo/vimproc'
-"Plugin 'adinapoli/cumino'
-"Plugin 'bitc/vim-hdevtools'
+Plugin 'travitch/hasksyn'
+Plugin 'dag/vim2hs'
+Plugin 'eagletmt/neco-ghc'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'Shougo/vimproc'
 
 " Haskell
-"let g:haddock_browser = "open"
-"let g:haddock_browser_callformat = "%s %s"
-"let g:haddock_docdir = "/usr/local/share/doc/ghc/html"
+let g:haddock_browser = "open"
+let g:haddock_browser_callformat = "%s %s"
+let g:haddock_docdir = "/usr/local/share/doc/ghc/html"
 
-" JSX
-let g:jsx_ext_required = 0
-let g:formatprg_args_expr_javascript = '"-f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")." --e4x"'
+"function! s:get_cabal_sandbox()
+  "if filereadable('cabal.sandbox.config')
+    "let l:output = system('cat cabal.sandbox.config | grep local-repo')
+    "let l:dir = matchstr(substitute(l:output, '\n', ' ', 'g'), 'local-repo: \zs\S\+\ze\/packages')
+    "return '-s ' . l:dir
+  "else
+    "return ''
+  "endif
+"endfunction
+
+let g:syntastic_haskell_checkers = ['ghc_mod', 'hlint']
+"let g:syntastic_haskell_ghc_mod_args = s:get_cabal_sandbox()
+
+" JS and JSX
+autocmd FileType javascript set shiftwidth=2
+autocmd FileType javascript set tabstop=2
+autocmd FileType javascript set softtabstop=2
+let g:jsx_ext_required = 1
+let g:formatprg_args_javascript = "-f - -j -a -s 2 -w 80 -X"
+let g:formatprg_javascript = 'js-beautify'
+let g:formatprg_args_javascript_jsx = "-f - -j -a -s 2 -w 80 -X"
+let g:formatprg_javascript_jsx = 'js-beautify'
+let g:syntastic_javascript_checkers = ['eslint']
 
 syntax on
 scriptencoding utf-8
 
-nmap <Esc>s :w<CR>
+"nmap <Esc>s :w<CR>
 
 " NerdTree
 map <C-e> :NERDTreeToggle<CR>
@@ -101,9 +116,7 @@ noremap <F3> :Autoformat<CR><CR>
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 0
 nnoremap ,a :call Autopep8()<CR>
-let g:syntastic_python_python_exec = '/Users/alex/.virtualenvs/dev/bin/python'
 let g:syntastic_python_checkers=['python', 'pylint', 'pep8']
-"let g:syntastic_python_pylint_args = "--ignore=E501 --max-complexity 10"
 
 nnoremap ,t :TagbarToggle<CR>
 
@@ -183,8 +196,18 @@ au FileChangedShell * echo "Warning: File changed on disk"
 set clipboard=unnamed
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'dir':  '\v[\/](node_modules)|(\.(git|hg|svn))$',
   \ 'file': '\v\.(pyc|so|dll)$'
   \ }
 
 set diffopt=filler,vertical
+
+" leave insert mode quickly
+if ! has('gui_running')
+  set ttimeoutlen=10
+  augroup FastEscape
+    autocmd!
+    au InsertEnter * set timeoutlen=0
+    au InsertLeave * set timeoutlen=1000
+  augroup END
+endif
