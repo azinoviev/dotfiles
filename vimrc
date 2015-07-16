@@ -11,7 +11,7 @@ call vundle#rc()
 " general plugins
 Plugin 'gmarik/vundle'
 Plugin 'scrooloose/nerdtree'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
@@ -52,16 +52,16 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'python_match.vim'
 
 " Haskell
-Plugin 'travitch/hasksyn'
-Plugin 'dag/vim2hs'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'Shougo/vimproc'
+"Plugin 'travitch/hasksyn'
+"Plugin 'dag/vim2hs'
+"Plugin 'eagletmt/neco-ghc'
+"Plugin 'eagletmt/ghcmod-vim'
+"Plugin 'Shougo/vimproc'
 
 " Haskell
-let g:haddock_browser = "open"
-let g:haddock_browser_callformat = "%s %s"
-let g:haddock_docdir = "/usr/local/share/doc/ghc/html"
+"let g:haddock_browser = "open"
+"let g:haddock_browser_callformat = "%s %s"
+"let g:haddock_docdir = "/usr/local/share/doc/ghc/html"
 
 "function! s:get_cabal_sandbox()
   "if filereadable('cabal.sandbox.config')
@@ -73,7 +73,7 @@ let g:haddock_docdir = "/usr/local/share/doc/ghc/html"
   "endif
 "endfunction
 
-let g:syntastic_haskell_checkers = ['ghc_mod', 'hlint']
+"let g:syntastic_haskell_checkers = ['ghc_mod', 'hlint']
 "let g:syntastic_haskell_ghc_mod_args = s:get_cabal_sandbox()
 
 " JS and JSX
@@ -81,16 +81,14 @@ autocmd FileType javascript set shiftwidth=2
 autocmd FileType javascript set tabstop=2
 autocmd FileType javascript set softtabstop=2
 let g:jsx_ext_required = 1
-let g:formatprg_args_javascript = "-f - -j -a -s 2 -w 80 -X"
-let g:formatprg_javascript = 'js-beautify'
-let g:formatprg_args_javascript_jsx = "-f - -j -a -s 2 -w 80 -X"
-let g:formatprg_javascript_jsx = 'js-beautify'
+"let g:formatprg_args_javascript = "-f - -j -a -s 2 -w 80 -X"
+"let g:formatprg_javascript = 'js-beautify'
+"let g:formatprg_args_javascript_jsx = "-f - -j -a -s 2 -w 80 -X"
+"let g:formatprg_javascript_jsx = 'js-beautify'
 let g:syntastic_javascript_checkers = ['eslint']
 
 syntax on
 scriptencoding utf-8
-
-"nmap <Esc>s :w<CR>
 
 " NerdTree
 map <C-e> :NERDTreeToggle<CR>
@@ -129,21 +127,21 @@ set hidden
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 
-set t_Co=16
+set t_Co=256
 
 "let g:solarized_termtrans=1
 "let g:solarized_contrast="high"
 "let g:solarized_visibility="high"
 "let g:solarized_termcolors=256
-let g:airline_theme="solarized"
+let g:airline_theme="PaperColor"
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
 " color solarized
 syntax enable
-set background=dark
-colorscheme solarized
+set background=light
+colorscheme PaperColor
 set showmode
 
 highlight clear SignColumn
