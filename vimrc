@@ -12,6 +12,7 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized' " Solarized 16 color terminal must be used
+Plugin 'NLKNguyen/papercolor-theme' " Nice theme for 256 color terminal
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
@@ -89,8 +90,6 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 syntax on
 scriptencoding utf-8
-
-"nmap <Esc>s :w<CR>
 
 " NerdTree
 map <C-e> :NERDTreeToggle<CR>
