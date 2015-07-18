@@ -11,7 +11,7 @@ call vundle#rc()
 " general plugins
 Plugin 'gmarik/vundle'
 Plugin 'scrooloose/nerdtree'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized' " Solarized 16 color terminal must be used
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
@@ -81,10 +81,10 @@ autocmd FileType javascript set shiftwidth=2
 autocmd FileType javascript set tabstop=2
 autocmd FileType javascript set softtabstop=2
 let g:jsx_ext_required = 1
-let g:formatprg_args_javascript = "-f - -j -a -s 2 -w 80 -X"
-let g:formatprg_javascript = 'js-beautify'
-let g:formatprg_args_javascript_jsx = "-f - -j -a -s 2 -w 80 -X"
-let g:formatprg_javascript_jsx = 'js-beautify'
+"let g:formatprg_args_javascript = "-f - -j -a -s 2 -w 80 -X"
+"let g:formatprg_javascript = 'js-beautify'
+"let g:formatprg_args_javascript_jsx = "-f - -j -a -s 2 -w 80 -X"
+"let g:formatprg_javascript_jsx = 'js-beautify'
 let g:syntastic_javascript_checkers = ['eslint']
 
 syntax on
