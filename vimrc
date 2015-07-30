@@ -130,7 +130,7 @@ set laststatus=2
 
 set t_Co=16
 
-"let g:solarized_termtrans=1
+let g:solarized_termtrans=1
 "let g:solarized_contrast="high"
 "let g:solarized_visibility="high"
 "let g:solarized_termcolors=256
