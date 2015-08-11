@@ -11,7 +11,7 @@ call vundle#rc()
 " general plugins
 Plugin 'gmarik/vundle'
 Plugin 'scrooloose/nerdtree'
-Plugin 'altercation/vim-colors-solarized' " Solarized 16 color terminal must be used
+Plugin 'altercation/vim-colors-solarized' " Solarized terminal must be used
 Plugin 'NLKNguyen/papercolor-theme' " Nice theme for 256 color terminal
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
