@@ -52,6 +52,9 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'python_match.vim'
 
+" go
+Plugin 'fatih/vim-go'
+
 " Haskell
 Plugin 'travitch/hasksyn'
 Plugin 'dag/vim2hs'
@@ -130,7 +133,7 @@ set laststatus=2
 
 set t_Co=16
 
-"let g:solarized_termtrans=1
+let g:solarized_termtrans=1
 "let g:solarized_contrast="high"
 "let g:solarized_visibility="high"
 "let g:solarized_termcolors=256
@@ -210,3 +213,7 @@ if ! has('gui_running')
     au InsertLeave * set timeoutlen=1000
   augroup END
 endif
+
+" Go settings
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+au BufNewFile,BufRead *.go setlocal nolist
