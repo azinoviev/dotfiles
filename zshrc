@@ -5,7 +5,7 @@ export LC_ALL=en_US.UTF-8
 
 export EDITOR=vim
 
-alias tmux="TERM=screen-256color-bce tmux"
+alias tmux="TERM=screen-256color-bce tmux -2"
 
 # pyenv
 export PATH="$HOME/.pyenv/bin:${PATH}"

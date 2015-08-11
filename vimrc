@@ -18,11 +18,12 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'matchit.zip'
 Plugin 'bling/vim-airline'
-Plugin 'Lokaltog/vim-easymotion'
+Plugin 'easymotion/vim-easymotion'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'mbbill/undotree'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'editorconfig/editorconfig-vim'
 
 " programming plugins
 Plugin 'scrooloose/syntastic'
@@ -77,6 +78,8 @@ let g:haddock_docdir = "/usr/local/share/doc/ghc/html"
 let g:syntastic_haskell_checkers = ['ghc_mod', 'hlint']
 "let g:syntastic_haskell_ghc_mod_args = s:get_cabal_sandbox()
 
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
 " JS and JSX
 autocmd FileType javascript set shiftwidth=2
 autocmd FileType javascript set tabstop=2
@@ -95,6 +98,8 @@ scriptencoding utf-8
 map <C-e> :NERDTreeToggle<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
+
+" let g:NERDSpaceDelims = 1
 
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
@@ -177,6 +182,9 @@ map <C-h> <C-W>h
 set nofoldenable
 
 set backspace=2 " make backspace work like most other apps
+
+" Fix for shift-tab
+exe 'set t_kB=' . nr2char(27) . '[Z'
 
 " highlight trailing whitespaces
 set list
