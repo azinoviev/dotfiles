@@ -52,6 +52,7 @@ Plugin 'hail2u/vim-css3-syntax'
 " Python plugins
 Plugin 'davidhalter/jedi-vim'
 Plugin 'python_match.vim'
+Plugin 'hdima/python-syntax'
 
 " go
 Plugin 'fatih/vim-go'

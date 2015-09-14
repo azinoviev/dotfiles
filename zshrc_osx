@@ -1,5 +1,5 @@
 # Java
-export JDK_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home
+export JDK_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home
 export JAVA_HOME=$JDK_HOME
 export JRE_HOME=$JDK_HOME/jre
 export PATH=$JDK_HOME/bin:$JRE_HOME/bin:$PATH
