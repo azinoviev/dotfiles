@@ -11,6 +11,7 @@ alias td1="tree -d -L 1"
 alias td2="tree -d -L 2"
 
 # pyenv
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PATH="$HOME/.pyenv/bin:${PATH}"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"

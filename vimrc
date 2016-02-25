@@ -5,7 +5,7 @@ set nowritebackup
 set noswapfile
 set shortmess+=I
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
 " general plugins
@@ -18,6 +18,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'matchit.zip'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'mbbill/undotree'
@@ -34,6 +35,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'rking/ag.vim'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -78,7 +80,10 @@ let g:haddock_docdir = "/usr/local/share/doc/ghc/html"
     "return ''
   "endif
 "endfunction
-
+"
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 let g:syntastic_haskell_checkers = ['ghc_mod', 'hlint']
 "let g:syntastic_haskell_ghc_mod_args = s:get_cabal_sandbox()
 
@@ -125,6 +130,7 @@ let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 0
 nnoremap ,a :call Autopep8()<CR>
 let g:syntastic_python_checkers=['python', 'pylint', 'pep8']
+let g:syntastic_python_python_exec = '~/.pyenv/versions/3.5.0/bin/python'
 
 nnoremap ,t :TagbarToggle<CR>
 

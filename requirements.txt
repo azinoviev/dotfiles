@@ -4,7 +4,6 @@ jedi
 pylint
 pudb
 ptpython
-pip-tools
 yappi
 coverage
 -e git+https://github.com/what-studio/profiling.git#egg=profiling
