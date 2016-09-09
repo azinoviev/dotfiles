@@ -5,11 +5,11 @@ set nowritebackup
 set noswapfile
 set shortmess+=I
 filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " general plugins
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized' " Solarized terminal must be used
 Plugin 'NLKNguyen/papercolor-theme' " Nice theme for 256 color terminal
@@ -17,7 +17,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'matchit.zip'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -66,26 +66,18 @@ Plugin 'eagletmt/neco-ghc'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'Shougo/vimproc'
 
+call vundle#end()
+filetype plugin indent on
+
 " Haskell
 let g:haddock_browser = "open"
 let g:haddock_browser_callformat = "%s %s"
 let g:haddock_docdir = "/usr/local/share/doc/ghc/html"
 
-"function! s:get_cabal_sandbox()
-  "if filereadable('cabal.sandbox.config')
-    "let l:output = system('cat cabal.sandbox.config | grep local-repo')
-    "let l:dir = matchstr(substitute(l:output, '\n', ' ', 'g'), 'local-repo: \zs\S\+\ze\/packages')
-    "return '-s ' . l:dir
-  "else
-    "return ''
-  "endif
-"endfunction
-"
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_haskell_checkers = ['ghc_mod', 'hlint']
-"let g:syntastic_haskell_ghc_mod_args = s:get_cabal_sandbox()
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
@@ -130,7 +122,7 @@ let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 0
 nnoremap ,a :call Autopep8()<CR>
 let g:syntastic_python_checkers=['python', 'pylint', 'pep8']
-let g:syntastic_python_python_exec = '~/.pyenv/versions/3.5.0/bin/python'
+let g:syntastic_python_python_exec = '~/.pyenv/versions/3.5.1/bin/python'
 
 nnoremap ,t :TagbarToggle<CR>
 
@@ -208,6 +200,8 @@ nnoremap <S-Tab> :bp<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+imap jk <esc>
+
 au FileChangedShell * echo "Warning: File changed on disk"
 
 set clipboard=unnamed
@@ -220,14 +214,14 @@ let g:ctrlp_custom_ignore = {
 set diffopt=filler,vertical
 
 " leave insert mode quickly
-if ! has('gui_running')
-  set ttimeoutlen=10
-  augroup FastEscape
-    autocmd!
-    au InsertEnter * set timeoutlen=0
-    au InsertLeave * set timeoutlen=1000
-  augroup END
-endif
+"if ! has('gui_running')
+  "set ttimeoutlen=10
+  "augroup FastEscape
+    "autocmd!
+    "au InsertEnter * set timeoutlen=0
+    "au InsertLeave * set timeoutlen=1000
+  "augroup END
+"endif
 
 " Go settings
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
