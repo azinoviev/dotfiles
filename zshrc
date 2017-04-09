@@ -10,6 +10,8 @@ alias td="tree -d -L 1"
 alias td1="tree -d -L 1"
 alias td2="tree -d -L 2"
 
+alias vi="vim -u $HOME/.dotfiles/vimrc_simple"
+
 # pyenv
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PATH="$HOME/.pyenv/bin:${PATH}"

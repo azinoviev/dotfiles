@@ -12,7 +12,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized' " Solarized terminal must be used
-Plugin 'NLKNguyen/papercolor-theme' " Nice theme for 256 color terminal
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
@@ -35,7 +34,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'rking/ag.vim'
+"Plugin 'rking/ag.vim'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -46,15 +45,17 @@ Plugin 'honza/vim-snippets'
 Plugin 'elzr/vim-json'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+"Plugin 'Valloric/YouCompleteMe'
 
 " Web
-Plugin 'amirh/HTML-AutoCloseTag'
+"Plugin 'amirh/HTML-AutoCloseTag'
 Plugin 'hail2u/vim-css3-syntax'
 
 " Python plugins
 Plugin 'davidhalter/jedi-vim'
 Plugin 'python_match.vim'
-Plugin 'hdima/python-syntax'
+"Plugin 'hdima/python-syntax'
+Plugin 'lilydjwg/python-syntax'
 
 " go
 Plugin 'fatih/vim-go'
@@ -79,21 +80,32 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_haskell_checkers = ['ghc_mod', 'hlint']
 
+autocmd FileType haskell set shiftwidth=2
+autocmd FileType haskell set tabstop=2
+autocmd FileType haskell set softtabstop=2
+
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " JS and JSX
 autocmd FileType javascript set shiftwidth=2
 autocmd FileType javascript set tabstop=2
 autocmd FileType javascript set softtabstop=2
-let g:jsx_ext_required = 1
+let g:jsx_ext_required = 0
 "let g:formatprg_args_javascript = "-f - -j -a -s 2 -w 80 -X"
 "let g:formatprg_javascript = 'js-beautify'
 "let g:formatprg_args_javascript_jsx = "-f - -j -a -s 2 -w 80 -X"
 "let g:formatprg_javascript_jsx = 'js-beautify'
 let g:syntastic_javascript_checkers = ['eslint']
 
+set ttyfast
+set lazyredraw
+
 syntax on
 scriptencoding utf-8
+
+" hybrid line numers
+set norelativenumber
+set number
 
 " NerdTree
 map <C-e> :NERDTreeToggle<CR>
@@ -121,8 +133,14 @@ noremap <F3> :Autoformat<CR><CR>
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 0
 nnoremap ,a :call Autopep8()<CR>
-let g:syntastic_python_checkers=['python', 'pylint', 'pep8']
-let g:syntastic_python_python_exec = '~/.pyenv/versions/3.5.1/bin/python'
+"let g:syntastic_python_checkers=['python', 'pylint', 'pep8']
+let g:syntastic_python_python_exec = '~/.pyenv/versions/dev36/bin/python3'
+
+"let g:ycm_server_python_interpreter = '~/.pyenv/versions/dev36/bin/python3'
+"let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+let g:ycm_filetype_specific_completion_to_disable = { 'python' : 1 }
+let g:ycm_filetype_blacklist = { 'python' : 1 }
 
 nnoremap ,t :TagbarToggle<CR>
 
@@ -147,7 +165,6 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 
 " color solarized
-syntax enable
 set background=dark
 colorscheme solarized
 set showmode
@@ -167,13 +184,10 @@ set splitbelow
 
 let mapleader = ','
 
-" hybrid line numers
-set relativenumber
-set number
 
 " Absolute line numbers in insert mode, relative in normal mode.
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
+"autocmd InsertEnter * :set number
+"autocmd InsertLeave * :set relativenumber
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -212,16 +226,6 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 set diffopt=filler,vertical
-
-" leave insert mode quickly
-"if ! has('gui_running')
-  "set ttimeoutlen=10
-  "augroup FastEscape
-    "autocmd!
-    "au InsertEnter * set timeoutlen=0
-    "au InsertLeave * set timeoutlen=1000
-  "augroup END
-"endif
 
 " Go settings
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4

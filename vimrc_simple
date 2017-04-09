@@ -1,0 +1,58 @@
+set nocompatible
+set nobackup
+set nowritebackup
+set noswapfile
+set shortmess+=I
+
+filetype plugin on
+
+scriptencoding utf-8
+
+set nospell
+au BufRead,BufNewFile * set nospell
+
+set hidden
+
+syntax enable
+set showmode
+
+set nowrap
+set autoindent
+set shiftwidth=4
+set expandtab
+set tabstop=4
+set softtabstop=4
+set nojoinspaces
+set splitright
+set splitbelow
+
+let mapleader = ','
+
+set relativenumber
+set number
+
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-l> <C-W>l
+map <C-h> <C-W>h
+
+set nofoldenable
+
+set backspace=2 " make backspace work like most other apps
+
+" Fix for shift-tab
+exe 'set t_kB=' . nr2char(27) . '[Z'
+
+" highlight trailing whitespaces
+set list
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+
+nnoremap <Tab> :bn<CR>
+nnoremap <S-Tab> :bp<CR>
+
+vnoremap < <gv
+vnoremap > >gv
+
+imap jk <esc>
+
+set diffopt=filler,vertical
