@@ -22,7 +22,6 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'mbbill/undotree'
 Plugin 'myusuf3/numbers.vim'
-Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'editorconfig/editorconfig-vim'
 
 " programming plugins
@@ -34,7 +33,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
 Plugin 'Chiel92/vim-autoformat'
-"Plugin 'rking/ag.vim'
+Plugin 'rking/ag.vim'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -45,7 +44,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'elzr/vim-json'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'prettier/vim-prettier'
 
 " Web
 "Plugin 'amirh/HTML-AutoCloseTag'
@@ -54,35 +53,14 @@ Plugin 'hail2u/vim-css3-syntax'
 " Python plugins
 Plugin 'davidhalter/jedi-vim'
 Plugin 'python_match.vim'
-"Plugin 'hdima/python-syntax'
-Plugin 'lilydjwg/python-syntax'
-
-" go
-Plugin 'fatih/vim-go'
-
-" Haskell
-Plugin 'travitch/hasksyn'
-Plugin 'dag/vim2hs'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'Shougo/vimproc'
+Plugin 'vim-python/python-syntax'
 
 call vundle#end()
 filetype plugin indent on
 
-" Haskell
-let g:haddock_browser = "open"
-let g:haddock_browser_callformat = "%s %s"
-let g:haddock_docdir = "/usr/local/share/doc/ghc/html"
-
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-let g:syntastic_haskell_checkers = ['ghc_mod', 'hlint']
-
-autocmd FileType haskell set shiftwidth=2
-autocmd FileType haskell set tabstop=2
-autocmd FileType haskell set softtabstop=2
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
@@ -97,8 +75,12 @@ let g:jsx_ext_required = 0
 "let g:formatprg_javascript_jsx = 'js-beautify'
 let g:syntastic_javascript_checkers = ['eslint']
 
+let g:prettier#exec_cmd_async = 1
+
 set ttyfast
 set lazyredraw
+" no pause on leaving insert mode
+set timeoutlen=1000 ttimeoutlen=0
 
 syntax on
 scriptencoding utf-8
@@ -109,6 +91,7 @@ set number
 
 " NerdTree
 map <C-e> :NERDTreeToggle<CR>
+nnoremap § :NERDTreeToggle<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 
@@ -127,14 +110,13 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 nnoremap ,sc :SyntasticCheck<CR>
 nnoremap ,sr :SyntasticReset<CR>
 
-noremap <F3> :Autoformat<CR><CR>
+noremap ,a :Autoformat<CR><CR>
 
 " Python
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 0
-nnoremap ,a :call Autopep8()<CR>
 "let g:syntastic_python_checkers=['python', 'pylint', 'pep8']
-let g:syntastic_python_python_exec = '~/.pyenv/versions/dev36/bin/python3'
+let g:syntastic_python_python_exec = '~/.pyenv/versions/dev3/bin/python3'
 
 "let g:ycm_server_python_interpreter = '~/.pyenv/versions/dev36/bin/python3'
 "let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
@@ -142,7 +124,10 @@ let g:syntastic_python_python_exec = '~/.pyenv/versions/dev36/bin/python3'
 let g:ycm_filetype_specific_completion_to_disable = { 'python' : 1 }
 let g:ycm_filetype_blacklist = { 'python' : 1 }
 
+let g:tagbar_autofocus = 1
+"let g:tagbar_compact = 1
 nnoremap ,t :TagbarToggle<CR>
+nnoremap ± :TagbarToggle<CR>
 
 set nospell
 au BufRead,BufNewFile * set nospell
@@ -184,7 +169,6 @@ set splitbelow
 
 let mapleader = ','
 
-
 " Absolute line numbers in insert mode, relative in normal mode.
 "autocmd InsertEnter * :set number
 "autocmd InsertLeave * :set relativenumber
@@ -215,6 +199,12 @@ vnoremap < <gv
 vnoremap > >gv
 
 imap jk <esc>
+imap jj <esc>
+
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
 
 au FileChangedShell * echo "Warning: File changed on disk"
 
@@ -227,6 +217,42 @@ let g:ctrlp_custom_ignore = {
 
 set diffopt=filler,vertical
 
-" Go settings
-au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
-au BufNewFile,BufRead *.go setlocal nolist
+" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
+let s:opam_share_dir = system("opam config var share")
+let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
+
+let s:opam_configuration = {}
+
+function! OpamConfOcpIndent()
+  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
+endfunction
+let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
+
+function! OpamConfOcpIndex()
+  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
+endfunction
+let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
+
+function! OpamConfMerlin()
+  let l:dir = s:opam_share_dir . "/merlin/vim"
+  execute "set rtp+=" . l:dir
+endfunction
+let s:opam_configuration['merlin'] = function('OpamConfMerlin')
+
+let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
+let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
+let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
+for tool in s:opam_packages
+  " Respect package order (merlin should be after ocp-index)
+  if count(s:opam_available_tools, tool) > 0
+    call s:opam_configuration[tool]()
+  endif
+endfor
+" ## end of OPAM user-setup addition for vim / base ## keep this line
+" ## added by OPAM user-setup for vim / ocp-indent ## 67ac1cb05194bd3e2b7045e834675210 ## you can edit, but keep this line
+if count(s:opam_available_tools,"ocp-indent") == 0
+  source "/Users/azinoviev/.opam/system/share/vim/syntax/ocp-indent.vim"
+endif
+" ## end of OPAM user-setup addition for vim / ocp-indent ## keep this line
+
+let g:syntastic_ocaml_checkers = ['merlin']
