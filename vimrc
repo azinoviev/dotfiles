@@ -13,7 +13,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized' " Solarized terminal must be used
 Plugin 'tpope/vim-surround'
-Plugin 'kien/ctrlp.vim'
+Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'matchit.zip'
 Plugin 'vim-airline/vim-airline'
@@ -25,7 +26,7 @@ Plugin 'myusuf3/numbers.vim'
 Plugin 'editorconfig/editorconfig-vim'
 
 " programming plugins
-Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mattn/webapi-vim'
@@ -45,6 +46,7 @@ Plugin 'elzr/vim-json'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'prettier/vim-prettier'
+Plugin 'ternjs/tern_for_vim'
 
 " Web
 "Plugin 'amirh/HTML-AutoCloseTag'
@@ -58,9 +60,16 @@ Plugin 'vim-python/python-syntax'
 call vundle#end()
 filetype plugin indent on
 
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+" ALE
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+nnoremap ,sc :ALELint<CR>
+nnoremap ,se :ALEEnable<CR>
+nnoremap ,sd :ALEDisable<CR>
+
+"let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
@@ -68,13 +77,9 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 autocmd FileType javascript set shiftwidth=2
 autocmd FileType javascript set tabstop=2
 autocmd FileType javascript set softtabstop=2
-let g:jsx_ext_required = 0
-"let g:formatprg_args_javascript = "-f - -j -a -s 2 -w 80 -X"
-"let g:formatprg_javascript = 'js-beautify'
-"let g:formatprg_args_javascript_jsx = "-f - -j -a -s 2 -w 80 -X"
-"let g:formatprg_javascript_jsx = 'js-beautify'
-let g:syntastic_javascript_checkers = ['eslint']
-
+"let g:jsx_ext_required = 0
+"let g:syntastic_javascript_checkers = ['eslint']
+let g:tern_map_keys=1
 let g:prettier#exec_cmd_async = 1
 
 set ttyfast
@@ -106,27 +111,28 @@ let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
-" Syntastic
-nnoremap ,sc :SyntasticCheck<CR>
-nnoremap ,sr :SyntasticReset<CR>
-
 noremap ,a :Autoformat<CR><CR>
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Python
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 0
 "let g:syntastic_python_checkers=['python', 'pylint', 'pep8']
-let g:syntastic_python_python_exec = '~/.pyenv/versions/dev3/bin/python3'
-
-"let g:ycm_server_python_interpreter = '~/.pyenv/versions/dev36/bin/python3'
-"let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
-let g:ycm_filetype_specific_completion_to_disable = { 'python' : 1 }
-let g:ycm_filetype_blacklist = { 'python' : 1 }
+"let g:syntastic_python_python_exec = '~/.pyenv/versions/dev3/bin/python3'
 
 let g:tagbar_autofocus = 1
 "let g:tagbar_compact = 1
-nnoremap ,t :TagbarToggle<CR>
+"nnoremap ,t :TagbarToggle<CR>
 nnoremap ± :TagbarToggle<CR>
 
 set nospell
@@ -210,49 +216,5 @@ au FileChangedShell * echo "Warning: File changed on disk"
 
 set clipboard=unnamed
 
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](node_modules)|(\.(git|hg|svn))$',
-  \ 'file': '\v\.(pyc|so|dll)$'
-  \ }
-
 set diffopt=filler,vertical
 
-" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
-let s:opam_share_dir = system("opam config var share")
-let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
-
-let s:opam_configuration = {}
-
-function! OpamConfOcpIndent()
-  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
-endfunction
-let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
-
-function! OpamConfOcpIndex()
-  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
-endfunction
-let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
-
-function! OpamConfMerlin()
-  let l:dir = s:opam_share_dir . "/merlin/vim"
-  execute "set rtp+=" . l:dir
-endfunction
-let s:opam_configuration['merlin'] = function('OpamConfMerlin')
-
-let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
-let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
-let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
-for tool in s:opam_packages
-  " Respect package order (merlin should be after ocp-index)
-  if count(s:opam_available_tools, tool) > 0
-    call s:opam_configuration[tool]()
-  endif
-endfor
-" ## end of OPAM user-setup addition for vim / base ## keep this line
-" ## added by OPAM user-setup for vim / ocp-indent ## 67ac1cb05194bd3e2b7045e834675210 ## you can edit, but keep this line
-if count(s:opam_available_tools,"ocp-indent") == 0
-  source "/Users/azinoviev/.opam/system/share/vim/syntax/ocp-indent.vim"
-endif
-" ## end of OPAM user-setup addition for vim / ocp-indent ## keep this line
-
-let g:syntastic_ocaml_checkers = ['merlin']
