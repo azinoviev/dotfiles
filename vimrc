@@ -60,16 +60,19 @@ Plugin 'vim-python/python-syntax'
 call vundle#end()
 filetype plugin indent on
 
+let mapleader = ','
+
+let g:vim_json_syntax_conceal = 0
+
 " ALE
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
+let g:ale_linters = {
+      \   'javascript': ['eslint'],
+      \}
 nnoremap ,sc :ALELint<CR>
 nnoremap ,se :ALEEnable<CR>
 nnoremap ,sd :ALEDisable<CR>
-
-"let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-"let g:syntastic_check_on_open = 0
-"let g:syntastic_check_on_wq = 0
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
@@ -83,7 +86,6 @@ let g:tern_map_keys=1
 let g:prettier#exec_cmd_async = 1
 
 set ttyfast
-set lazyredraw
 " no pause on leaving insert mode
 set timeoutlen=1000 ttimeoutlen=0
 
@@ -100,8 +102,6 @@ nnoremap § :NERDTreeToggle<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 
-" let g:NERDSpaceDelims = 1
-
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 let NERDTreeChDirMode=0
@@ -111,7 +111,11 @@ let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
-noremap ,a :Autoformat<CR><CR>
+noremap <leader>a :Autoformat<CR><CR>
+
+" fzf
+let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow -E .git -E node_modules -E .idea'
+nnoremap <Leader>f :Files<CR>
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -132,7 +136,7 @@ let g:jedi#popup_on_dot = 0
 
 let g:tagbar_autofocus = 1
 "let g:tagbar_compact = 1
-"nnoremap ,t :TagbarToggle<CR>
+nnoremap <leader>t :TagbarToggle<CR>
 nnoremap ± :TagbarToggle<CR>
 
 set nospell
@@ -172,12 +176,6 @@ set softtabstop=4
 set nojoinspaces
 set splitright
 set splitbelow
-
-let mapleader = ','
-
-" Absolute line numbers in insert mode, relative in normal mode.
-"autocmd InsertEnter * :set number
-"autocmd InsertLeave * :set relativenumber
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
