@@ -41,6 +41,8 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
+Plugin 'othree/xml.vim'
+
 " JavaScript
 Plugin 'elzr/vim-json'
 Plugin 'pangloss/vim-javascript'
@@ -60,6 +62,11 @@ Plugin 'vim-python/python-syntax'
 call vundle#end()
 filetype plugin indent on
 
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
+
 let mapleader = ','
 
 let g:vim_json_syntax_conceal = 0
@@ -70,6 +77,9 @@ let g:ale_lint_on_enter = 0
 let g:ale_linters = {
       \   'javascript': ['eslint'],
       \}
+let g:ale_fixers = {
+    \   'python': ['isort', 'autopep8'],
+    \ }
 nnoremap ,sc :ALELint<CR>
 nnoremap ,se :ALEEnable<CR>
 nnoremap ,sd :ALEDisable<CR>
@@ -116,6 +126,7 @@ noremap <leader>a :Autoformat<CR><CR>
 " fzf
 let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow -E .git -E node_modules -E .idea'
 nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>l :Lines<CR>
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -148,12 +159,12 @@ set hidden
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 
-set t_Co=16
+set t_Co=256
 
 let g:solarized_termtrans=1
-"let g:solarized_contrast="high"
-"let g:solarized_visibility="high"
-"let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
+let g:solarized_termcolors=256
 let g:airline_theme="solarized"
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep=''
@@ -212,7 +223,7 @@ map <right> <nop>
 
 au FileChangedShell * echo "Warning: File changed on disk"
 
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 set diffopt=filler,vertical
 
