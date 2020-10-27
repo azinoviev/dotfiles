@@ -5,64 +5,65 @@ set nowritebackup
 set noswapfile
 set shortmess+=I
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
 " general plugins
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-surround'
-Plugin 'junegunn/fzf.vim'
-Plugin 'junegunn/fzf'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'matchit.zip'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'mbbill/undotree'
-Plugin 'myusuf3/numbers.vim'
-Plugin 'editorconfig/editorconfig-vim'
+Plug 'VundleVim/Vundle.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-surround'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'terryma/vim-multiple-cursors'
+"Plug 'matchit.zip'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'easymotion/vim-easymotion'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'mbbill/undotree'
+Plug 'myusuf3/numbers.vim'
+Plug 'editorconfig/editorconfig-vim'
 
 " color schemes
-Plugin 'arcticicestudio/nord-vim'
+Plug 'arcticicestudio/nord-vim'
 
 " programming plugins
-Plugin 'neoclide/coc.nvim'
-Plugin 'w0rp/ale'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'mattn/webapi-vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'godlygeek/tabular'
-Plugin 'majutsushi/tagbar'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'rking/ag.vim'
+Plug 'neoclide/coc.nvim'
+Plug 'w0rp/ale'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'mattn/webapi-vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'godlygeek/tabular'
+Plug 'majutsushi/tagbar'
+Plug 'Chiel92/vim-autoformat'
+Plug 'rking/ag.vim'
 
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
-
-Plugin 'othree/xml.vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
 
 " JavaScript
-Plugin 'elzr/vim-json'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'prettier/vim-prettier'
-Plugin 'ternjs/tern_for_vim'
+Plug 'elzr/vim-json'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'prettier/vim-prettier'
+Plug 'ternjs/tern_for_vim'
 
 " Web
-"Plugin 'amirh/HTML-AutoCloseTag'
-Plugin 'hail2u/vim-css3-syntax'
+"Plug 'amirh/HTML-AutoCloseTag'
+Plug 'hail2u/vim-css3-syntax'
 
 " Python plugins
-"Plugin 'davidhalter/jedi-vim'
-Plugin 'python_match.vim'
-Plugin 'vim-python/python-syntax'
+"Plug 'davidhalter/jedi-vim'
+"Plug 'python_match.vim'
+Plug 'vim-python/python-syntax'
 
-call vundle#end()
+call plug#end()
+"call vundle#end()
 filetype plugin indent on
 
 set guioptions-=m
