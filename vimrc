@@ -11,7 +11,6 @@ call vundle#begin()
 " general plugins
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'altercation/vim-colors-solarized' " Solarized terminal must be used
 Plugin 'tpope/vim-surround'
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf'
@@ -25,7 +24,11 @@ Plugin 'mbbill/undotree'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'editorconfig/editorconfig-vim'
 
+" color schemes
+Plugin 'arcticicestudio/nord-vim'
+
 " programming plugins
+Plugin 'neoclide/coc.nvim'
 Plugin 'w0rp/ale'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
@@ -53,7 +56,7 @@ Plugin 'ternjs/tern_for_vim'
 Plugin 'hail2u/vim-css3-syntax'
 
 " Python plugins
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 Plugin 'python_match.vim'
 Plugin 'vim-python/python-syntax'
 
@@ -66,10 +69,6 @@ let g:ale_lint_on_enter = 0
 nnoremap ,sc :ALELint<CR>
 nnoremap ,se :ALEEnable<CR>
 nnoremap ,sd :ALEDisable<CR>
-
-"let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-"let g:syntastic_check_on_open = 0
-"let g:syntastic_check_on_wq = 0
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
@@ -96,7 +95,7 @@ set number
 
 " NerdTree
 map <C-e> :NERDTreeToggle<CR>
-nnoremap § :NERDTreeToggle<CR>
+nnoremap <Space>n :NERDTreeToggle<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 
@@ -107,7 +106,7 @@ let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn'
 let NERDTreeChDirMode=0
 let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden=0
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
@@ -130,10 +129,13 @@ let g:jedi#popup_on_dot = 0
 "let g:syntastic_python_checkers=['python', 'pylint', 'pep8']
 "let g:syntastic_python_python_exec = '~/.pyenv/versions/dev3/bin/python3'
 
+" vim-json
+let g:vim_json_syntax_conceal = 0
+
 let g:tagbar_autofocus = 1
 "let g:tagbar_compact = 1
 "nnoremap ,t :TagbarToggle<CR>
-nnoremap ± :TagbarToggle<CR>
+nnoremap <Space>t :TagbarToggle<CR>
 
 set nospell
 au BufRead,BufNewFile * set nospell
@@ -144,20 +146,13 @@ set hidden
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 
-set t_Co=16
+set t_Co=256
 
-let g:solarized_termtrans=1
-"let g:solarized_contrast="high"
-"let g:solarized_visibility="high"
-"let g:solarized_termcolors=256
-let g:airline_theme="solarized"
-let g:airline_powerline_fonts = 0
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+let g:airline_theme="nord"
 
 " color solarized
-set background=dark
-colorscheme solarized
+"set background=dark
+colorscheme nord
 set showmode
 
 highlight clear SignColumn
@@ -206,6 +201,8 @@ vnoremap > >gv
 
 imap jk <esc>
 imap jj <esc>
+imap ff <esc>
+imap fd <esc>
 
 map <up> <nop>
 map <down> <nop>
