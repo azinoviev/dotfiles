@@ -44,6 +44,8 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
+Plugin 'othree/xml.vim'
+
 " JavaScript
 Plugin 'elzr/vim-json'
 Plugin 'pangloss/vim-javascript'
@@ -63,9 +65,24 @@ Plugin 'vim-python/python-syntax'
 call vundle#end()
 filetype plugin indent on
 
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
+
+let mapleader = ','
+
+let g:vim_json_syntax_conceal = 0
+
 " ALE
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
+let g:ale_linters = {
+      \   'javascript': ['eslint'],
+      \}
+let g:ale_fixers = {
+    \   'python': ['isort', 'autopep8'],
+    \ }
 nnoremap ,sc :ALELint<CR>
 nnoremap ,se :ALEEnable<CR>
 nnoremap ,sd :ALEDisable<CR>
@@ -82,7 +99,6 @@ let g:tern_map_keys=1
 let g:prettier#exec_cmd_async = 1
 
 set ttyfast
-set lazyredraw
 " no pause on leaving insert mode
 set timeoutlen=1000 ttimeoutlen=0
 
@@ -99,8 +115,6 @@ nnoremap <Space>n :NERDTreeToggle<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 
-" let g:NERDSpaceDelims = 1
-
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 let NERDTreeChDirMode=0
@@ -110,7 +124,12 @@ let NERDTreeShowHidden=0
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 
-noremap ,a :Autoformat<CR><CR>
+noremap <leader>a :Autoformat<CR><CR>
+
+" fzf
+let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow -E .git -E node_modules -E .idea'
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>l :Lines<CR>
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -168,12 +187,6 @@ set nojoinspaces
 set splitright
 set splitbelow
 
-let mapleader = ','
-
-" Absolute line numbers in insert mode, relative in normal mode.
-"autocmd InsertEnter * :set number
-"autocmd InsertLeave * :set relativenumber
-
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-l> <C-W>l
@@ -211,7 +224,7 @@ map <right> <nop>
 
 au FileChangedShell * echo "Warning: File changed on disk"
 
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 set diffopt=filler,vertical
 
