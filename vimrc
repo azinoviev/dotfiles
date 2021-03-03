@@ -90,6 +90,9 @@ nnoremap ,sd :ALEDisable<CR>
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
+" Snipmate
+let g:snipMate = { 'snippet_version' : 1 }
+
 " JS and JSX
 autocmd FileType javascript set shiftwidth=2
 autocmd FileType javascript set tabstop=2
